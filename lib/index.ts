@@ -65,6 +65,7 @@ const calendar = {
    * @Array Of Property trans["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
    * @return Cn string
    */
+
   // tianGan: ["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"],
   tianGan: ['\u7532', '\u4e59', '\u4e19', '\u4e01', '\u620a', '\u5df1', '\u5e9a', '\u8f9b', '\u58ec', '\u7678'],
 
@@ -74,6 +75,7 @@ const calendar = {
    * @trans ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
    * @return Cn string
    */
+
   // diZhi: ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"],
   diZhi: ['\u5b50', '\u4e11', '\u5bc5', '\u536f', '\u8fb0', '\u5df3', '\u5348', '\u672a', '\u7533', '\u9149', '\u620c', '\u4ea5'],
 
@@ -83,6 +85,7 @@ const calendar = {
    * @trans ["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
    * @return Cn string
    */
+
   // Animals: ["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
   Animals: ['\u9f20', '\u725b', '\u864e', '\u5154', '\u9f99', '\u86c7', '\u9a6c', '\u7f8a', '\u7334', '\u9e21', '\u72d7', '\u732a'],
 
@@ -92,6 +95,7 @@ const calendar = {
    * @trans ["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
    * @return Cn string
    */
+
   // solarTerm: ["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
   solarTerm: ['\u5c0f\u5bd2', '\u5927\u5bd2', '\u7acb\u6625', '\u96e8\u6c34', '\u60ca\u86f0', '\u6625\u5206', '\u6e05\u660e', '\u8c37\u96e8', '\u7acb\u590f', '\u5c0f\u6ee1', '\u8292\u79cd', '\u590f\u81f3', '\u5c0f\u6691', '\u5927\u6691', '\u7acb\u79cb', '\u5904\u6691', '\u767d\u9732', '\u79cb\u5206', '\u5bd2\u9732', '\u971c\u964d', '\u7acb\u51ac', '\u5c0f\u96ea', '\u5927\u96ea', '\u51ac\u81f3'],
 
@@ -175,6 +179,7 @@ const calendar = {
    * @trans ['日','一','二','三','四','五','六','七','八','九','十']
    * @return Cn string
    */
+
   nStr1: ['\u65e5', '\u4e00', '\u4e8c', '\u4e09', '\u56db', '\u4e94', '\u516d', '\u4e03', '\u516b', '\u4e5d', '\u5341'],
 
   /**
@@ -183,6 +188,7 @@ const calendar = {
    * @trans ['初','十','廿','卅']
    * @return Cn string
    */
+
   nStr2: ['\u521d', '\u5341', '\u5eff', '\u5345'],
 
   /**
@@ -191,6 +197,7 @@ const calendar = {
    * @trans ['正','一','二','三','四','五','六','七','八','九','十','冬','腊']
    * @return Cn string
    */
+
   nStr3: ['\u6b63', '\u4e8c', '\u4e09', '\u56db', '\u4e94', '\u516d', '\u4e03', '\u516b', '\u4e5d', '\u5341', '\u51ac', '\u814a'],
 
   /**
@@ -223,7 +230,10 @@ const calendar = {
   /**
    * 数字与中文照表
    * Unicode编码数组
+   * @param year   1989
+   * @return string   一九八九
    */
+
   getYearCN(year: number) {
     const Year = year.toString().split('')
     const number2CN = [
@@ -246,6 +256,7 @@ const calendar = {
    * @evar .lYearDays(1987) ;//count=387
    * @param y
    */
+
   lYearDays(y: number) {
     let i, sum = 348
     for (i = 0x8000; i > 0x8; i >>= 1) {
@@ -260,6 +271,7 @@ const calendar = {
    * @eg:var leapMonth = calendar.leapMonth(1987) ;//leapMonth=6
    * @param y
    */
+
   leapMonth(y: number) { //闰字编码 \u95f0
     return (calendar.lunarInfo[y - 1900] & 0xf)
   },
@@ -270,6 +282,7 @@ const calendar = {
    * @eg:var leapMonthDay = calendar.leapDays(1987) ;//leapMonthDay=29
    * @param y
    */
+
   leapDays(y: number) {
     if (calendar.leapMonth(y)) {
       return ((calendar.lunarInfo[y - 1900] & 0x10000) ? 30 : 29)
@@ -284,6 +297,7 @@ const calendar = {
    * @param y
    * @param m
    */
+
   monthDays(y: number, m: number) {
     if (m > 12 || m < 1) { //月份参数从1至12，参数错误返回-1
       return -1
@@ -298,6 +312,7 @@ const calendar = {
    * @param y
    * @param m
    */
+
   solarDays(y: number, m: number) {
     if (m > 12 || m < 1) { //若参数错误 返回-1
       return -1
@@ -315,6 +330,7 @@ const calendar = {
    * @param  lYear 农历年的年份数
    * @return Cn string
    */
+
   totianGandiZhiYear(lYear: number) {
     let ganKey = (lYear - 3) % 10
     let zhiKey = (lYear - 3) % 12
@@ -372,12 +388,14 @@ const calendar = {
    * @param term string
    * @param lunarYear
    */
+
   getFestival(solarMonth: number, solarDay: number, lunarMonth: number,
               lunarDay: number, isTerm: boolean, term: string | undefined, lunarYear: number): Festival {
     const obj = FestivalArray.filter((item: any) => {
       const flag1 = solarMonth === item.solarMonth && solarDay === item.solarDay // 阳历节日
       const flag2 = lunarMonth === item.lunarMonth && lunarDay === item.lunarDay && !item.newYearEve // 农历节日
       const flag3 = isTerm === item.isTerm && term === item.term // 节气节日
+      // 农历12月 且农历日期等于除夕，并且当天的日期数等于当年腊月的天数，即腊月有29天时，必须为二十九，腊月有30天时，必须等于三十
       const flag4 = lunarMonth === 12 && lunarMonth === item.lunarMonth && lunarDay === item.lunarDay && lunarDay === calendar.monthDays(lunarYear, lunarMonth) && !!item.newYearEve
       return flag1 || flag2 || flag3 || flag4
     })
@@ -831,15 +849,16 @@ const calendar = {
   },
 
   /**
-   * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
-   * @param year number
-   * @param month number
-   * @param date number
-   * @param isLeapM boolean
+   * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历o
+   * @param year number  年份数字
+   * @param month number  月份数字
+   * @param date number  日期数字
+   * @param isLeapM boolean  是否闰月
    * @return JSON object
    * @eg:console.log(calendar.lunar2solar(1987,9,10));
    */
-  lunar2solar(year: number, month: number, date: number, isLeapM: boolean) {
+
+  lunar2solar(year: number, month: number, date: number, isLeapM: boolean): any {
 
     //参数区间1901正月初一 ~ 2099年冬月二十
     const isLeapMonth = isLeapM // 是否闰月

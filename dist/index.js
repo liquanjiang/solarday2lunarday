@@ -195,6 +195,8 @@ var calendar = {
     /**
      * 数字与中文照表
      * Unicode编码数组
+     * @param year   1989
+     * @return string   一九八九
      */
     getYearCN: function (year) {
         var Year = year.toString().split('');
@@ -341,6 +343,7 @@ var calendar = {
             var flag1 = solarMonth === item.solarMonth && solarDay === item.solarDay; // 阳历节日
             var flag2 = lunarMonth === item.lunarMonth && lunarDay === item.lunarDay && !item.newYearEve; // 农历节日
             var flag3 = isTerm === item.isTerm && term === item.term; // 节气节日
+            // 农历12月 且农历日期等于除夕，并且当天的日期数等于当年腊月的天数，即腊月有29天时，必须为二十九，腊月有30天时，必须等于三十
             var flag4 = lunarMonth === 12 && lunarMonth === item.lunarMonth && lunarDay === item.lunarDay && lunarDay === calendar.monthDays(lunarYear, lunarMonth) && !!item.newYearEve;
             return flag1 || flag2 || flag3 || flag4;
         });
@@ -747,11 +750,11 @@ var calendar = {
         return obj;
     },
     /**
-     * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
-     * @param year number
-     * @param month number
-     * @param date number
-     * @param isLeapM boolean
+     * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历o
+     * @param year number  年份数字
+     * @param month number  月份数字
+     * @param date number  日期数字
+     * @param isLeapM boolean  是否闰月
      * @return JSON object
      * @eg:console.log(calendar.lunar2solar(1987,9,10));
      */

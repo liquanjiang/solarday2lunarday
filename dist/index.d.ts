@@ -95,6 +95,8 @@ declare const calendar: {
     /**
      * 数字与中文照表
      * Unicode编码数组
+     * @param year   1989
+     * @return string   一九八九
      */
     getYearCN(year: number): string;
     /**
@@ -298,45 +300,14 @@ declare const calendar: {
         festivalEnName: string;
     };
     /**
-     * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
-     * @param year number
-     * @param month number
-     * @param date number
-     * @param isLeapM boolean
+     * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历o
+     * @param year number  年份数字
+     * @param month number  月份数字
+     * @param date number  日期数字
+     * @param isLeapM boolean  是否闰月
      * @return JSON object
      * @eg:console.log(calendar.lunar2solar(1987,9,10));
      */
-    lunar2solar(year: number, month: number, date: number, isLeapM: boolean): string | {
-        lunarYear: number;
-        lunarYearCN: string;
-        lunarMonth: number;
-        lunarDay: number;
-        lunarMonthDays: number;
-        fullLunarMonthString: string;
-        zodiac: string;
-        IMonthCn: string;
-        IDayCn: string;
-        solarYear: any;
-        solarYearCN: string;
-        solarMonth: any;
-        solarDay: any;
-        solarMonthDays: string | number;
-        gzYear: string;
-        gzMonth: string;
-        gzDay: string;
-        isToday: boolean;
-        isLeapMonth: boolean;
-        isLeapYear: string | boolean;
-        nWeek: any;
-        ncWeek: string;
-        isTerm: boolean;
-        Term: string;
-        constellation: string;
-        GzNy: string;
-        astroEn: string;
-        isFestival: boolean;
-        festivalName: string;
-        festivalEnName: string;
-    };
+    lunar2solar(year: number, month: number, date: number, isLeapM: boolean): any;
 };
 export default calendar;

@@ -50,14 +50,14 @@
 #	"isLeapYear": false,  // 是否闰年
 #	"ncWeek": "星期四", // 表示星期的汉字
 #	"isTerm": true,  // 是否节气
-#	"Term": "立夏",  // 
-#	"constellation": "金牛座",
-#	"GzNy": "覆灯火",
-#	"astroEn": "Taurus",
-#	"isFestival": true,
-#	"festivalName": "劳动节",
-#	"festivalEnName": "International Labour Day",
-#	"isLunarFestival": false
+#	"Term": "立夏",  // 节日名称
+#	"constellation": "金牛座", // 星座名称
+#	"GzNy": "覆灯火", // 干支纳音
+#	"astroEn": "Taurus", // 星座英文名称
+#	"isFestival": true,  // 是否节日
+#	"festivalName": "劳动节", // 节日中文名称
+#	"festivalEnName": "International Labour Day",  // 节日英文名称
+#	"isLunarFestival": false  // 是否农历节日
 # }
 
 # 可调用方法
