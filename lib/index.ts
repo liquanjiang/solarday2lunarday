@@ -256,11 +256,11 @@ const calendar = {
   /**
    * 返回农历y年一整年的总天数
    * @return Number
-   * @evar .lYearDays(1987) ;//count=387
+   * @evar .lunarYearDays(1987) ;//count=387
    * @param y
    */
 
-  lYearDays(y: number) {
+  lunarYearDays(y: number) {
     let i, sum = 348
     for (i = 0x8000; i > 0x8; i >>= 1) {
       sum += (calendar.lunarInfo[y - 1900] & i) ? 1 : 0
@@ -349,7 +349,7 @@ const calendar = {
    * @return Cn string
    */
 
-  toAstro(cMonth: number, cDay: number) {
+  getConstellation(cMonth: number, cDay: number) {
     const s = '\u9b54\u7faf\u6c34\u74f6\u53cc\u9c7c\u767d\u7f8a\u91d1\u725b\u53cc\u5b50\u5de8\u87f9\u72ee\u5b50\u5904\u5973\u5929\u79e4\u5929\u874e\u5c04\u624b\u9b54\u7faf'
     const arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22]
     return s.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + '\u5ea7'//座
@@ -361,7 +361,7 @@ const calendar = {
    * @param Astro
    */
 
-  toAstroEn(Astro: string): string {
+  getConstellationEn(Astro: string): string {
     const constellationArray = [
       {key: 'Capricornus', name: '摩羯座', value: '\u9b54\u7faf\u5ea7'},
       {key: 'Taurus', name: '金牛座', value: '\u91d1\u725b\u5ea7'},
@@ -691,7 +691,7 @@ const calendar = {
       solarDay = objDate.getDate()
     let offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000
     for (i = 1900; i < 2101 && offset > 0; i++) {
-      temp = calendar.lYearDays(i)
+      temp = calendar.lunarYearDays(i)
       offset -= temp
     }
     if (offset < 0) {
@@ -782,9 +782,9 @@ const calendar = {
     const gzD = calendar.totianGandiZhi(dayCyclical + solarDay - 1)
 
     //该日期所属的星座
-    const constellation = calendar.toAstro(solarMonth, solarDay)
+    const constellation = calendar.getConstellation(solarMonth, solarDay)
 
-    const astroEn = calendar.toAstroEn(constellation)
+    const astroEn = calendar.getConstellationEn(constellation)
 
     // 该年是否为闰年
     const isLeapYear = calendar.isLeapYear(solarYear)
@@ -902,7 +902,7 @@ const calendar = {
     //计算农历的时间差
     let offset = 0
     for (let i = 1900; i < year; i++) {
-      offset += calendar.lYearDays(i)
+      offset += calendar.lunarYearDays(i)
     }
     let leap = 0, isAdd = false
     for (let i = 1; i < month; i++) {

@@ -222,10 +222,10 @@ var calendar = {
     /**
      * 返回农历y年一整年的总天数
      * @return Number
-     * @evar .lYearDays(1987) ;//count=387
+     * @evar .lunarYearDays(1987) ;//count=387
      * @param y
      */
-    lYearDays: function (y) {
+    lunarYearDays: function (y) {
         var i, sum = 348;
         for (i = 0x8000; i > 0x8; i >>= 1) {
             sum += (calendar.lunarInfo[y - 1900] & i) ? 1 : 0;
@@ -305,7 +305,7 @@ var calendar = {
      * @param  cDay [description]
      * @return Cn string
      */
-    toAstro: function (cMonth, cDay) {
+    getConstellation: function (cMonth, cDay) {
         var s = '\u9b54\u7faf\u6c34\u74f6\u53cc\u9c7c\u767d\u7f8a\u91d1\u725b\u53cc\u5b50\u5de8\u87f9\u72ee\u5b50\u5904\u5973\u5929\u79e4\u5929\u874e\u5c04\u624b\u9b54\u7faf';
         var arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
         return s.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + '\u5ea7'; //座
@@ -315,7 +315,7 @@ var calendar = {
      * @return Cn string
      * @param Astro
      */
-    toAstroEn: function (Astro) {
+    getConstellationEn: function (Astro) {
         var constellationArray = [
             { key: 'Capricornus', name: '摩羯座', value: '\u9b54\u7faf\u5ea7' },
             { key: 'Taurus', name: '金牛座', value: '\u91d1\u725b\u5ea7' },
@@ -616,7 +616,7 @@ var calendar = {
         var solarYear = objDate.getFullYear(), solarMonth = objDate.getMonth() + 1, solarDay = objDate.getDate();
         var offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000;
         for (i = 1900; i < 2101 && offset > 0; i++) {
-            temp = calendar.lYearDays(i);
+            temp = calendar.lunarYearDays(i);
             offset -= temp;
         }
         if (offset < 0) {
@@ -699,8 +699,8 @@ var calendar = {
         var dayCyclical = Date.UTC(solarYear, sm, 1, 0, 0, 0, 0) / 86400000 + 25567 + 10;
         var gzD = calendar.totianGandiZhi(dayCyclical + solarDay - 1);
         //该日期所属的星座
-        var constellation = calendar.toAstro(solarMonth, solarDay);
-        var astroEn = calendar.toAstroEn(constellation);
+        var constellation = calendar.getConstellation(solarMonth, solarDay);
+        var astroEn = calendar.getConstellationEn(constellation);
         // 该年是否为闰年
         var isLeapYear = calendar.isLeapYear(solarYear);
         // 获取该阴历月的天数，如果是闰月则返回该年闰月的天数，如果不是则返回该阴历月天使，（取值29或30）
@@ -797,7 +797,7 @@ var calendar = {
         //计算农历的时间差
         var offset = 0;
         for (var i = 1900; i < year; i++) {
-            offset += calendar.lYearDays(i);
+            offset += calendar.lunarYearDays(i);
         }
         var leap = 0, isAdd = false;
         for (var i = 1; i < month; i++) {

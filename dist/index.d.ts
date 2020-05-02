@@ -105,10 +105,10 @@ declare const calendar: {
     /**
      * 返回农历y年一整年的总天数
      * @return Number
-     * @evar .lYearDays(1987) ;//count=387
+     * @evar .lunarYearDays(1987) ;//count=387
      * @param y
      */
-    lYearDays(y: number): number;
+    lunarYearDays(y: number): number;
     /**
      * 返回农历y年闰月是哪个月；若y年没有闰月 则返回0
      * @return Number (0-12)
@@ -151,13 +151,13 @@ declare const calendar: {
      * @param  cDay [description]
      * @return Cn string
      */
-    toAstro(cMonth: number, cDay: number): string;
+    getConstellation(cMonth: number, cDay: number): string;
     /**
      * 公历月、日判断所属星座
      * @return Cn string
      * @param Astro
      */
-    toAstroEn(Astro: string): string;
+    getConstellationEn(Astro: string): string;
     /**
      * 根据公历月份、公历日期、农历月份、农历日期、节气判断是否为节日，并范围节日对象
      * @return Cn string

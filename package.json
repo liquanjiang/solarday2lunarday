@@ -1,6 +1,6 @@
 {
   "name": "solarday2lunarday",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "将公历日期转为农历日期",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
