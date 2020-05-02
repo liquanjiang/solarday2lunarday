@@ -1,6 +1,6 @@
 {
   "name": "solarday2lunarday",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "将公历日期转为农历日期",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,5 +15,15 @@
     "typescript": "^3.8.3"
   },
   "main": "index.js",
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "keywords": [
+   "阳历转阴历",
+    "天天地支",
+    "查询节日",
+    "calendar",
+    "solar",
+    "lunar",
+    "solarday2lunarday",
+    "festival"
+  ]
 }
