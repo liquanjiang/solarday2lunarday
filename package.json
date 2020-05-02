@@ -1,0 +1,19 @@
+{
+  "name": "solarday2lunarday",
+  "version": "1.5.0",
+  "description": "将公历日期转为农历日期",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "release": "tsc && npm publish"
+  },
+  "author": "liquanjiang",
+  "license": "ISC",
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "moment": "^2.25.0",
+    "typescript": "^3.8.3"
+  },
+  "main": "index.js",
+  "types": "./index.d.ts"
+}
