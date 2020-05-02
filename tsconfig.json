@@ -13,8 +13,10 @@
     // 生成 `.d.ts` 文件
     "outDir": "./dist",
     // 编译后生成的文件目录
-    "strict": true
+    "strict": true,
     // 开启严格的类型检测
+    "esModuleInterop": true,
+    // esModuleInterop 的作用可见以下链接： https://blog.csdn.net/juzipidemimi/article/details/103438437
   },
   "exclude": [
     "node_modules",

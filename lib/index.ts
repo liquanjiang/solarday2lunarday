@@ -17,7 +17,6 @@ export interface Festival {
  * @公历转农历：calendar.solar2lunar(1987,11,01); // [you can ignore params of prefix 0]
  * 公历转农历，支出输入：一个参数时间戳，时间字符串（1989-07-14 或 1989/07/16）
  * 也可以输入三个参数：年份数字、月份数字、日期数字
- *
  * @农历转公历：calendar.lunar2solar(1987,09,10); // [you can ignore params of prefix 0]
  */
 
@@ -203,6 +202,8 @@ const calendar = {
   /**
    * 天干地支与甲子纳音对照表
    * 中文字符串数组
+   * @Array Of Property
+   * @return Cn string
    */
 
   GZNaYin: [
@@ -214,6 +215,8 @@ const calendar = {
   /**
    * 天干地支与甲子纳音对照表
    * Unicode编码数组
+   * @Array Of Property
+   * @return Cn string
    */
 
   GZNaYinUnicode: [
@@ -272,7 +275,7 @@ const calendar = {
    * @param y
    */
 
-  leapMonth(y: number) { //闰字编码 \u95f0
+  leapMonth(y: number) { // 闰字编码 \u95f0
     return (calendar.lunarInfo[y - 1900] & 0xf)
   },
 

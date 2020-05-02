@@ -1,6 +1,6 @@
 {
   "name": "solarday2lunarday",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "将公历日期转为农历日期",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,13 @@
   "author": "liquanjiang",
   "license": "ISC",
   "dependencies": {
-    "@types/moment": "^2.13.0",
     "moment": "^2.25.0",
     "typescript": "^3.8.3"
   },
   "main": "index.js",
-  "types": "./index.d.ts",
+  "types": "dist/index.d.ts",
   "keywords": [
-   "阳历转阴历",
+    "阳历转阴历",
     "天天地支",
     "查询节日",
     "calendar",

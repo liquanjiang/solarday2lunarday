@@ -1,13 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore
-var moment_1 = require("moment");
-var index_1 = require("./festival/index");
+var moment_1 = __importDefault(require("moment"));
+var index_1 = __importDefault(require("./festival/index"));
 /**
  * @公历转农历：calendar.solar2lunar(1987,11,01); // [you can ignore params of prefix 0]
  * 公历转农历，支出输入：一个参数时间戳，时间字符串（1989-07-14 或 1989/07/16）
  * 也可以输入三个参数：年份数字、月份数字、日期数字
- *
  * @农历转公历：calendar.lunar2solar(1987,09,10); // [you can ignore params of prefix 0]
  */
 var calendar = {
@@ -172,6 +174,8 @@ var calendar = {
     /**
      * 天干地支与甲子纳音对照表
      * 中文字符串数组
+     * @Array Of Property
+     * @return Cn string
      */
     GZNaYin: [
         '海中金', '炉中火', '大林木', '路旁土', '剑锋金', '山头火', '漳下水', '城头土', '白腊金', '杨柳木',
@@ -181,6 +185,8 @@ var calendar = {
     /**
      * 天干地支与甲子纳音对照表
      * Unicode编码数组
+     * @Array Of Property
+     * @return Cn string
      */
     GZNaYinUnicode: [
         '\u6d77\u4e2d\u91d1', '\u7089\u4e2d\u706b', '\u5927\u6797\u6728', '\u8def\u65c1\u571f',
