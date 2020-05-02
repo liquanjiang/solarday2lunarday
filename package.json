@@ -13,8 +13,12 @@
     "moment": "^2.25.0",
     "typescript": "^3.8.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liquanjiang/solarday2lunarday.git"
+  },
   "main": "index.js",
-  "types": "dist/index.d.ts",
+  "typings": "./index.d.ts",
   "keywords": [
     "阳历转阴历",
     "天天地支",
