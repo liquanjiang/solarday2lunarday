@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore
-var moment_1 = __importDefault(require("moment"));
+var dayjs_1 = __importDefault(require("dayjs"));
 var index_1 = __importDefault(require("./festival/index"));
 /**
  * @公历转农历：calendar.solar2lunar(1987,11,01); // [you can ignore params of prefix 0]
@@ -367,7 +367,9 @@ var calendar = {
                 var secondFestivalEnName = sec.festivalEnName;
                 return {
                     isDoubleFestival: isDoubleFestival, doubleFestivalName: doubleFestivalName, secondFestivalName: secondFestivalName, secondFestivalEnName: secondFestivalEnName,
-                    isLunarFestival: isLunar, festivalEnName: festivalEnName, festivalName: festivalName, isFestival: true
+                    isLunarFestival: isLunar,
+                    festivalEnName: festivalEnName, festivalName: festivalName,
+                    isFestival: true
                 };
             }
         }
@@ -526,7 +528,7 @@ var calendar = {
             return error;
         }
         var len = calendar.isLeapYear(y) ? 366 : 365;
-        var Year = moment_1.default(solarYear.toString() + "-01-01");
+        var Year = dayjs_1.default(solarYear.toString() + "-01-01");
         for (var i = 0; i < len; i++) {
             var obj = calendar.solar2lunar(Year);
             if (typeof obj === 'object') {
@@ -550,7 +552,7 @@ var calendar = {
                     }
                 }
             }
-            Year = moment_1.default(Year).add(1, 'd');
+            Year = dayjs_1.default(Year).add(1, 'd');
         }
         return festivalArr;
     },
@@ -572,7 +574,7 @@ var calendar = {
             dd = ds.getDate();
         }
         else if (args.length < 3) {
-            var ds = moment_1.default(Year);
+            var ds = dayjs_1.default(Year);
             yy = ds.get('year');
             mm = ds.get('month') + 1;
             dd = ds.get('date');

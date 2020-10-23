@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 export interface Festival {
     isLunarFestival: boolean;
     isFestival: boolean;
@@ -211,7 +212,7 @@ declare const calendar: {
      * @eg:console.log(calendar.isLeapYear(1989));
      * @param solarYear number
      */
-    isLeapYear(solarYear: number): string | boolean;
+    isLeapYear(solarYear: number): boolean | string;
     /**
      * 传入阳历年,月份，返回当月的阳历月天数
      * @return number
@@ -220,14 +221,14 @@ declare const calendar: {
      * @param solarMonth number
      *
      */
-    countSolarMonthDays(solarYear: number, solarMonth: number): string | number;
+    countSolarMonthDays(solarYear: number, solarMonth: number): number | string;
     /**
      * 传入阳历年份，获取该年的所有节日，节日列表同 FestivalArray 中所列举
      * @return []
      *
      * @param solarYear: string | number
      */
-    getAllFestival(solarYear: string | number): "请输入正确的年份格式" | "请检查输入参数的合法性，目前仅支持1901.1.1-2099.12.31之间的查询,传入的时间超出查询范围！" | ({
+    getAllFestival(solarYear: number | string): "请输入正确的年份格式" | "请检查输入参数的合法性，目前仅支持1901.1.1-2099.12.31之间的查询,传入的时间超出查询范围！" | ({
         doubleFestivalName: string | undefined;
         isDoubleFestival: true;
         secondFestivalEnName: string | undefined;
@@ -270,7 +271,7 @@ declare const calendar: {
      * @param Month
      * @param Day
      */
-    solar2lunar(Year?: string | number | undefined, Month?: string | number | undefined, Day?: string | number | undefined): "请检查输入参数的合法性，目前仅支持1901.1.1-2099.12.31之间的查询,传入的时间超出查询范围！" | "请检查输入参数的合法性，月份只能在1~12之间！" | "日期只能在1~31之间！" | {
+    solar2lunar(Year?: string | number | Date | dayjs.Dayjs | undefined, Month?: string | number | undefined, Day?: string | number | undefined): "请检查输入参数的合法性，目前仅支持1901.1.1-2099.12.31之间的查询,传入的时间超出查询范围！" | "请检查输入参数的合法性，月份只能在1~12之间！" | "日期只能在1~31之间！" | {
         lunarYear: number;
         lunarYearCN: string;
         lunarMonth: number;

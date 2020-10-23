@@ -1,6 +1,6 @@
 {
   "name": "solarday2lunarday",
-  "version": "1.10.1",
+  "version": "1.11.0",
   "description": "将公历日期转为农历日期",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   "author": "liquanjiang",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.25.0"
+    "dayjs": "^1.9.3"
   },
   "repository": {
     "type": "git",

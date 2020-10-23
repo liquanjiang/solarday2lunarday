@@ -1,5 +1,5 @@
 // @ts-ignore
-import moment from 'moment'
+import dayjs, { Dayjs } from 'dayjs'
 import FestivalArray from './festival/index'
 
 export interface Festival {
@@ -592,7 +592,7 @@ const calendar = {
     }
 
     const len = calendar.isLeapYear(y) ? 366 : 365
-    let Year = moment(`${solarYear.toString()}-01-01`)
+    let Year = dayjs(`${solarYear.toString()}-01-01`)
     for (let i = 0; i < len; i++) {
       const obj = calendar.solar2lunar(Year)
       if (typeof obj === 'object') {
@@ -619,7 +619,7 @@ const calendar = {
           }
         }
       }
-      Year = moment(Year).add(1, 'd')
+      Year = dayjs(Year).add(1, 'd')
     }
     return festivalArr
   },
@@ -633,7 +633,7 @@ const calendar = {
    * @param Day
    */
 
-  solar2lunar(Year?: number | string, Month?: number | string, Day?: number | string) { // 参数区间1900.1.1~2099.12.31
+  solar2lunar(Year?: number | string | Date | Dayjs, Month?: number | string, Day?: number | string) { // 参数区间1900.1.1~2099.12.31
 
     let yy: number, mm: number, dd: number
     const args = Array.from(arguments)
@@ -643,7 +643,7 @@ const calendar = {
       mm = ds.getMonth() + 1
       dd = ds.getDate()
     } else if (args.length < 3) {
-      const ds = moment(Year)
+      const ds = dayjs(Year)
       yy = ds.get('year')
       mm = ds.get('month') + 1
       dd = ds.get('date')
