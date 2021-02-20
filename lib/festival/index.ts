@@ -48,7 +48,7 @@ const FestivalArray: Festival[] = [
     solarDay: null,
     lunarMonth: 1,
     lunarDay: 15,
-    festivalName: '春节',
+    festivalName: '元宵节',
     festivalEnName: 'Spring Festival'
   },
 
