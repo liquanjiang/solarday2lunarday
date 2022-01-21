@@ -26,7 +26,10 @@ const FestivalArray: Festival[] = [
    * 8.中秋节，八月十五
    * 9.重阳节，九月初九
    * 10.冬至节，冬至节气
-   * 11.除夕节，春节的前一天，腊月二十九或腊月三十
+   * 11.腊八节，阴历腊月初八
+   * 12.北方小年，阴历腊月二十三
+   * 13.南方小年，阴历腊月二十四
+   * 14.除夕节，春节的前一天，腊月二十九或腊月三十
    *
    */
 
@@ -142,6 +145,39 @@ const FestivalArray: Festival[] = [
     festivalEnName: 'Winter solstice',
     isTerm: true,
     term: '冬至'
+  },
+
+  // 腊八节，阴历腊月初八
+  {
+    isLunar: true,
+    solarMonth: null,
+    solarDay: null,
+    lunarMonth: 12,
+    lunarDay: 8,
+    festivalName: '腊八节',
+    festivalEnName: 'The Laba Rice Porridge Festival',
+  },
+
+  // 北方小年，阴历腊月二十三
+  {
+    isLunar: true,
+    solarMonth: null,
+    solarDay: null,
+    lunarMonth: 12,
+    lunarDay: 23,
+    festivalName: '北方小年',
+    festivalEnName: 'The Litter Year of North',
+  },
+
+  // 南方小年，阴历腊月二十四
+  {
+    isLunar: true,
+    solarMonth: null,
+    solarDay: null,
+    lunarMonth: 12,
+    lunarDay: 24,
+    festivalName: '南方小年',
+    festivalEnName: 'The Litter Year of South',
   },
 
   // 除夕，春节的前一天，农历腊月二十九, 且当年腊月月为29天
