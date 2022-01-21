@@ -13,7 +13,10 @@ var FestivalArray = [
      * 8.中秋节，八月十五
      * 9.重阳节，九月初九
      * 10.冬至节，冬至节气
-     * 11.除夕节，春节的前一天，腊月二十九或腊月三十
+     * 11.腊八节，阴历腊月初八
+     * 12.北方小年，阴历腊月二十三
+     * 13.南方小年，阴历腊月二十四
+     * 14.除夕节，春节的前一天，腊月二十九或腊月三十
      *
      */
     // 春节，农历正月初一
@@ -120,6 +123,36 @@ var FestivalArray = [
         isTerm: true,
         term: '冬至'
     },
+    // 腊八节，阴历腊月初八
+    {
+        isLunar: true,
+        solarMonth: null,
+        solarDay: null,
+        lunarMonth: 12,
+        lunarDay: 8,
+        festivalName: '腊八节',
+        festivalEnName: 'The Laba Rice Porridge Festival',
+    },
+    // 北方小年，阴历腊月二十三
+    {
+        isLunar: true,
+        solarMonth: null,
+        solarDay: null,
+        lunarMonth: 12,
+        lunarDay: 23,
+        festivalName: '北方小年',
+        festivalEnName: 'The Litter Year of North',
+    },
+    // 南方小年，阴历腊月二十四
+    {
+        isLunar: true,
+        solarMonth: null,
+        solarDay: null,
+        lunarMonth: 12,
+        lunarDay: 24,
+        festivalName: '南方小年',
+        festivalEnName: 'The Litter Year of South',
+    },
     // 除夕，春节的前一天，农历腊月二十九, 且当年腊月月为29天
     {
         isLunar: true,
@@ -130,7 +163,7 @@ var FestivalArray = [
         festivalName: '除夕',
         festivalEnName: 'New year\'s Eve',
         newYearEve: true,
-        monthDays: 29,
+        monthDays: 29, // 表示农历当月是29天
     },
     // 除夕，春节的前一天，农历腊月三十，当年腊月为30天
     {
@@ -142,7 +175,7 @@ var FestivalArray = [
         festivalName: '除夕',
         festivalEnName: 'New year\'s Eve',
         newYearEve: true,
-        monthDays: 30,
+        monthDays: 30, // 表示农历当月是30天
     },
     /** 公历节日
      *

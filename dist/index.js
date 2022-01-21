@@ -362,13 +362,17 @@ var calendar = {
             else { // 如果有两个节日重合，则添加双节同庆
                 var sec = obj[1];
                 var isDoubleFestival = true;
-                var doubleFestivalName = "" + festivalName + sec.festivalName + "\u540C\u5E86";
+                var doubleFestivalName = "".concat(festivalName).concat(sec.festivalName, "\u540C\u5E86");
                 var secondFestivalName = sec.festivalName;
                 var secondFestivalEnName = sec.festivalEnName;
                 return {
-                    isDoubleFestival: isDoubleFestival, doubleFestivalName: doubleFestivalName, secondFestivalName: secondFestivalName, secondFestivalEnName: secondFestivalEnName,
+                    isDoubleFestival: isDoubleFestival,
+                    doubleFestivalName: doubleFestivalName,
+                    secondFestivalName: secondFestivalName,
+                    secondFestivalEnName: secondFestivalEnName,
                     isLunarFestival: isLunar,
-                    festivalEnName: festivalEnName, festivalName: festivalName,
+                    festivalEnName: festivalEnName,
+                    festivalName: festivalName,
                     isFestival: true
                 };
             }
@@ -528,31 +532,54 @@ var calendar = {
             return error;
         }
         var len = calendar.isLeapYear(y) ? 366 : 365;
-        var Year = dayjs_1.default(solarYear.toString() + "-01-01");
+        var Year = (0, dayjs_1.default)("".concat(solarYear.toString(), "-01-01"));
         for (var i = 0; i < len; i++) {
             var obj = calendar.solar2lunar(Year);
             if (typeof obj === 'object') {
                 var solarMonth = obj.solarMonth, solarDay = obj.solarDay, lunarMonth = obj.lunarMonth, lunarDay = obj.lunarDay, isTerm = obj.isTerm, Term = obj.Term, fullLunarMonthString = obj.fullLunarMonthString;
                 var festival = calendar.getFestival(solarMonth, solarDay, lunarMonth, lunarDay, isTerm, Term, y - 1);
                 var _a = festival.isFestival, isFestival = _a === void 0 ? false : _a, _b = festival.isLunarFestival, isLunarFestival = _b === void 0 ? false : _b, _c = festival.festivalEnName, festivalEnName = _c === void 0 ? '' : _c, _d = festival.festivalName, festivalName = _d === void 0 ? '' : _d, doubleFestivalName = festival.doubleFestivalName, _e = festival.isDoubleFestival, isDoubleFestival = _e === void 0 ? false : _e, secondFestivalEnName = festival.secondFestivalEnName, secondFestivalName = festival.secondFestivalName;
-                var fullSolarMonthString = solarMonth + "\u6708" + solarDay + "\u65E5";
+                var fullSolarMonthString = "".concat(solarMonth, "\u6708").concat(solarDay, "\u65E5");
                 if (isFestival) {
                     if (isDoubleFestival) {
                         festivalArr.push({
-                            doubleFestivalName: doubleFestivalName, isDoubleFestival: isDoubleFestival, secondFestivalEnName: secondFestivalEnName, secondFestivalName: secondFestivalName,
-                            fullLunarMonthString: fullLunarMonthString, isFestival: isFestival, isLunarFestival: isLunarFestival, festivalEnName: festivalEnName, fullSolarMonthString: fullSolarMonthString,
-                            festivalName: festivalName, solarMonth: solarMonth, solarDay: solarDay, lunarMonth: lunarMonth, lunarDay: lunarDay, isTerm: isTerm, Term: Term,
+                            doubleFestivalName: doubleFestivalName,
+                            isDoubleFestival: isDoubleFestival,
+                            secondFestivalEnName: secondFestivalEnName,
+                            secondFestivalName: secondFestivalName,
+                            fullLunarMonthString: fullLunarMonthString,
+                            isFestival: isFestival,
+                            isLunarFestival: isLunarFestival,
+                            festivalEnName: festivalEnName,
+                            fullSolarMonthString: fullSolarMonthString,
+                            festivalName: festivalName,
+                            solarMonth: solarMonth,
+                            solarDay: solarDay,
+                            lunarMonth: lunarMonth,
+                            lunarDay: lunarDay,
+                            isTerm: isTerm,
+                            Term: Term,
                         });
                     }
                     else {
                         festivalArr.push({
-                            fullLunarMonthString: fullLunarMonthString, isFestival: isFestival, isLunarFestival: isLunarFestival, festivalEnName: festivalEnName, fullSolarMonthString: fullSolarMonthString,
-                            festivalName: festivalName, solarMonth: solarMonth, solarDay: solarDay, lunarMonth: lunarMonth, lunarDay: lunarDay, isTerm: isTerm, Term: Term,
+                            fullLunarMonthString: fullLunarMonthString,
+                            isFestival: isFestival,
+                            isLunarFestival: isLunarFestival,
+                            festivalEnName: festivalEnName,
+                            fullSolarMonthString: fullSolarMonthString,
+                            festivalName: festivalName,
+                            solarMonth: solarMonth,
+                            solarDay: solarDay,
+                            lunarMonth: lunarMonth,
+                            lunarDay: lunarDay,
+                            isTerm: isTerm,
+                            Term: Term,
                         });
                     }
                 }
             }
-            Year = dayjs_1.default(Year).add(1, 'd');
+            Year = (0, dayjs_1.default)(Year).add(1, 'd');
         }
         return festivalArr;
     },
@@ -574,7 +601,7 @@ var calendar = {
             dd = ds.getDate();
         }
         else if (args.length < 3) {
-            var ds = dayjs_1.default(Year);
+            var ds = (0, dayjs_1.default)(Year);
             yy = ds.get('year');
             mm = ds.get('month') + 1;
             dd = ds.get('date');
@@ -711,7 +738,7 @@ var calendar = {
         var solarMonthDays = calendar.countSolarMonthDays(solarYear, solarMonth);
         // 获取该年的干支纳音
         var index = Math.floor((lunarYear - 1864) % 60 / 2);
-        var GzNy = "" + calendar.GZNaYinUnicode[index];
+        var GzNy = "".concat(calendar.GZNaYinUnicode[index]);
         // 加入节假日的判断,节日的对象数据类型参见interface  Festival 中的介绍
         var festival = calendar.getFestival(solarMonth, solarDay, lunarMonth, lunarDay, isTerm, Term, lunarYear);
         // 阴历月份的中文
@@ -728,7 +755,7 @@ var calendar = {
             lunarMonth: lunarMonth,
             lunarDay: lunarDay,
             lunarMonthDays: lunarMonthDays,
-            fullLunarMonthString: "" + IMonthCn + IDayCn,
+            fullLunarMonthString: "".concat(IMonthCn).concat(IDayCn),
             zodiac: calendar.getAnimal(lunarYear),
             IMonthCn: IMonthCn,
             IDayCn: IDayCn,
@@ -752,7 +779,7 @@ var calendar = {
             astroEn: astroEn,
             isFestival: false,
             festivalName: '',
-            festivalEnName: '',
+            festivalEnName: '', // 节日英文
         };
         var final = Object.assign(obj, festival);
         return obj;
@@ -792,7 +819,7 @@ var calendar = {
             _day = calendar.leapDays(year);
         }
         if (date > _day) {
-            var error = "\u4F20\u53C2\u8981\u6C42\u8BA1\u7B97\u9634\u5386\u6708\u4EFD\u7684\u5929\u6570\uFF0C\u8BE5\u9634\u5386\u6708\u4EFD\u5E76\u6CA1\u6709\u9634\u5386" + calendar.toChinaDay(date);
+            var error = "\u4F20\u53C2\u8981\u6C42\u8BA1\u7B97\u9634\u5386\u6708\u4EFD\u7684\u5929\u6570\uFF0C\u8BE5\u9634\u5386\u6708\u4EFD\u5E76\u6CA1\u6709\u9634\u5386".concat(calendar.toChinaDay(date));
             console.error(error);
             return error;
         } //参数合法性效验
